@@ -1,0 +1,48 @@
+wifi:
+  ssid: MySSID
+  password: password1
+
+network:
+  enable_ipv6: true
+
+uart:
+  id: uart_hm
+  rx_pin: GPIO05
+  tx_pin: GPIO17
+  baud_rate: 115200
+
+esph_hm_rf_eth:
+  uart_id: uart_hm
+  reset_output: reset_pin
+  red_led: ledc_output1
+  green_led: ledc_output2
+  connected:
+    name: "CCU Connected"
+  radio_module_type:
+    name: HM Radio Module Type
+  firmware_version:
+    id: fw_version_sensor
+  serial:
+    name: "HM Module Serial"
+  SGTIN:
+    name: "HM Module SGTIN"
+
+output:
+  - platform: gpio
+    pin: GPIO14
+    id: reset_pin
+
+  - platform: ledc
+    pin: GPIO15
+    id: ledc_output1
+    frequency: 1000Hz
+
+  - platform: ledc
+    pin: GPIO16
+    id: ledc_output2
+    frequency: 1000Hz
+
+text_sensor:
+  - platform: template
+    id: fw_version_sensor
+    name: "Firmware Version"
